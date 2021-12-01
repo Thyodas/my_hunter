@@ -10,6 +10,8 @@
 #include <math.h>
 #include <stdlib.h>
 
+void print_help(void);
+
 void event_handler(sfRenderWindow *window, sfEvent *event,
 game_data_t *game_data);
 
@@ -69,7 +71,7 @@ sprite_data_t *create_projectile(void)
     return (projectile);
 }
 
-int main(void)
+int my_hunter(void)
 {
     sfVideoMode mode = {1920, 1080, 32};
     sfRenderWindow *window = sfRenderWindow_create(mode, "window", sfClose, NULL);
@@ -102,4 +104,16 @@ int main(void)
     }
     sfRenderWindow_destroy(window);
     return (0);
+}
+
+int main(int argc, char **argv)
+{
+    if (argc > 1) {
+        if (my_strcmp(argv[1], "-h") == 0) {
+            print_help();
+            return (0);
+        }
+        return (84);
+    }
+    my_hunter();
 }
