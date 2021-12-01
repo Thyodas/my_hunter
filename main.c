@@ -19,6 +19,7 @@ void animate_ship(sprite_data_t *ship);
 void move_background(sprite_data_t *background);
 
 void move_projectile(sprite_data_t *projectile);
+void animate_projectile(sprite_data_t *projectile);
 
 sprite_data_t *create_background(void)
 {
@@ -61,7 +62,7 @@ sprite_data_t *create_projectile(void)
     sfSprite_setTexture(projectile->sprite, projectile->texture, sfTrue);
     sfIntRect rect_ship = {6, 18, 5, 13};
     sfSprite_setTextureRect(projectile->sprite, rect_ship);
-    projectile->speed_vector = (sfVector2f){0, -(SHIP_SPEED + 5)};
+    projectile->speed_vector = (sfVector2f){0, -(SHIP_SPEED - 2)};
     sfSprite_setScale(projectile->sprite, (sfVector2f){8, 8});
     sfSprite_setPosition(projectile->sprite, (sfVector2f){960 - 8 * 8, 700});
     projectile->animation_counter = 0;
@@ -90,6 +91,7 @@ int main(void)
             move_background(background);
             move_projectile(projectile);
             animate_ship(game_data.ship);
+            animate_projectile(projectile);
             sfRenderWindow_clear(window, sfBlack);
             sfRenderWindow_drawSprite(window, background->sprite, NULL);
             sfRenderWindow_drawSprite(window, game_data.ship->sprite, NULL);

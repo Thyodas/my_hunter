@@ -9,7 +9,7 @@ SRC = $(wildcard *.c)
 
 OBJ = $(SRC:.c=.o)
 
-NAME = window
+NAME = my_hunter
 
 INCLUDE = include
 
