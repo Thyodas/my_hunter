@@ -11,12 +11,14 @@
 
 void move_background(sprite_data_t *background)
 {
-    sfVector2f *speed = &(background->speed_vector);
+    sfVector2f vector = background->norm_vector;
     sfVector2f pos = sfSprite_getPosition(background->sprite);
-    if (pos.y + speed->y > 0)
+    if (pos.y + vector.y * background->speed > 0)
         sfSprite_setPosition(background->sprite, (sfVector2f){0, -3840});
     else
-        sfSprite_move(background->sprite, background->speed_vector);
+        sfSprite_move(background->sprite,
+        (sfVector2f){vector.x * background->speed,
+                     vector.y * background->speed});
 }
 
 void create_background(game_data_t *g_data)
@@ -31,6 +33,7 @@ void create_background(game_data_t *g_data)
     sfSprite_setTextureRect(background->sprite, (sfIntRect){0, 0, 3840, 1080});
     sfSprite_setScale(background->sprite, (sfVector2f){10, 10});
     sfSprite_setPosition(background->sprite, (sfVector2f){0, -3840});
-    background->speed_vector = (sfVector2f){0, BACKGROUND_SPEED};
+    background->speed = BACKGROUND_SPEED;
+    background->norm_vector = (sfVector2f){0, 1};
     g_data->background = background;
 }

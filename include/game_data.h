@@ -22,7 +22,12 @@
     } texture_state_t;*/
 
     #define SHIP_SPEED 10
+    #define PROJECTILE_SPEED 6
     #define BACKGROUND_SPEED 3
+
+    #define ABS(value) (value < 0 ? (value) * (-1) : (value))
+    #define MAX(a, b) ((a) > (b) ? (a) : (b))
+    #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
     static const sfIntRect SHIP_STATES[] = {
         {0, 0, 16, 24}, {16, 0, 16, 24}, {32, 0, 16, 24}, {48, 0, 16, 24},
@@ -35,8 +40,9 @@
         sfImage *image;
         sfTexture *texture;
         sfSprite *sprite;
-        sfVector2f speed_vector;
+        sfVector2f norm_vector;
         sfIntRect *state_list;
+        int speed;
         int animation_counter;
         int id;
     } sprite_data_t;
@@ -75,7 +81,8 @@
     void zqsd_events(game_data_t *g_data);
     void event_handler(game_data_t *g_data);
 
-    // print_help.c
+    // utils.c
     void print_help(void);
+    void setup_projectile(game_data_t *g_data, sprite_data_t *projectile);
 
 #endif /* !GAME_DATA_H_ */

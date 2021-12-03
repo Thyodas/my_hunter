@@ -23,16 +23,16 @@ void window_events(game_data_t *g_data)
 
 void zqsd_events(game_data_t *g_data)
 {
-    g_data->ship->speed_vector.x = 0;
-    g_data->ship->speed_vector.y = 0;
+    g_data->ship->norm_vector.x = 0;
+    g_data->ship->norm_vector.y = 0;
     if (sfKeyboard_isKeyPressed(sfKeyZ))
-        g_data->ship->speed_vector.y = -SHIP_SPEED;
+        g_data->ship->norm_vector.y = -1;
     if (sfKeyboard_isKeyPressed(sfKeyQ))
-        g_data->ship->speed_vector.x = -SHIP_SPEED;
+        g_data->ship->norm_vector.x = -1;
     if (sfKeyboard_isKeyPressed(sfKeyS))
-        g_data->ship->speed_vector.y = SHIP_SPEED;
+        g_data->ship->norm_vector.y = 1;
     if (sfKeyboard_isKeyPressed(sfKeyD))
-        g_data->ship->speed_vector.x = SHIP_SPEED;
+        g_data->ship->norm_vector.x = 1;
 }
 
 void click_events(game_data_t *g_data)
