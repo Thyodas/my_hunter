@@ -26,7 +26,7 @@ void animate_planet(sprite_data_t *planet)
 
     if (planet->animation_counter > 5) {
         planet_rect.left = 210 * planet->animation_state;
-        planet->animation_state = planet->animation_state == 49 ? 0 : planet->animation_state + 1;
+        planet->animation_state = planet->animation_state >= 49 ? 0 : planet->animation_state + 1;
         planet->animation_counter = 0;
     } else
         ++planet->animation_counter;
@@ -49,6 +49,7 @@ sprite_data_t *create_planet(game_data_t *g_data)
     sfSprite_setScale(planet->sprite, (sfVector2f){4, 4});
     planet->id = planet_id++;
     planet->animation_counter = 0;
+    planet->animation_state = 0;
     my_add_node(planet, &(g_data->planet_list));
     //setup_planet(g_data, planet);
     return (planet);

@@ -49,6 +49,8 @@
     } sprite_data_t;
 
     typedef struct {
+        int score;
+        int hp;
         sfRenderWindow *window;
         sfEvent event;
         sfClock *clock;
@@ -56,11 +58,12 @@
         sprite_data_t *background;
         linked_list_t *projectile_list;
         linked_list_t *planet_list;
+        linked_list_t *ennemy_list;
     } game_data_t;
 
     // main.c
     int game_loop(game_data_t *data);
-    int my_hunter(void);
+    int my_hunter(game_data_t *g_data);
     int main(int argc, char **argv);
 
     // projectile.c
@@ -74,6 +77,21 @@
     void animate_planet(sprite_data_t *planet);
     sprite_data_t *create_planet(game_data_t *g_data);
     void render_all_planet(game_data_t *g_data);
+
+    // projectile_utils.c
+    sfVector2f calc_projectile_vector(game_data_t *g_data, float x, float y);
+    void check_shoot_angle(float *angle, sfVector2f *norm_vector);
+    void setup_projectile(game_data_t *g_data, sprite_data_t *projectile);
+
+    // ennemy.c
+    void move_ennemy(sprite_data_t *ennemy);
+    void animate_ennemy(sprite_data_t *ennemy);
+    sprite_data_t *create_ennemy(game_data_t *g_data);
+    void render_all_ennemy(game_data_t *g_data);
+
+    // ennemy_utils.c
+    void setup_ennemy(sprite_data_t *ennemy);
+    void spawn_ennemy(game_data_t *g_data);
 
     // ship.c
     void move_ship(sprite_data_t *ship);
@@ -91,6 +109,6 @@
 
     // utils.c
     void print_help(void);
-    void setup_projectile(game_data_t *g_data, sprite_data_t *projectile);
+    sfVector2f normalize_vector(sfVector2f vector);
 
 #endif /* !GAME_DATA_H_ */
