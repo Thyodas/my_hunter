@@ -12,14 +12,15 @@
 char *type_string(va_list args, printf_data_t *data)
 {
     char *value = va_arg(args, char *);
-    char *new_str = value;
+    char *new_str = my_strdup(value);
+    char *to_free = new_str;
 
-    if (data->precision != -1) {
-        int new_size = MIN(my_strlen(value), data->precision);
-        new_str = malloc(sizeof(char) * (new_size + 1));
-
-        for (int i = 0 ; i < new_size ; ++i)
+    if (data->precision != -1 && data->precision < my_strlen(value)) {
+        new_str = malloc(sizeof(char) * (data->precision + 1));
+        for (int i = 0 ; i < data->precision ; ++i)
             new_str[i] = value[i];
+        new_str[data->precision] = '\0';
+        free(to_free);
     }
     return (new_str);
 }

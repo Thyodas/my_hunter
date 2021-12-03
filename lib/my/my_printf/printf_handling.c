@@ -9,6 +9,7 @@
 #include "include/my_printf.h"
 #include "../my.h"
 #include "include/arg_type.h"
+#include "include/flags.h"
 
 int get_flag_pos(char c);
 arg_type_t get_type(const char *str);
@@ -46,6 +47,13 @@ int get_nbr_len(const char *format)
 
 int min_width_handling(const char *format, printf_data_t *data, va_list args)
 {
+    if (format[0] == '*') {
+        data->min_field_width = va_arg(args, int);
+        if (data->min_field_width < 0)
+            data->active_flags[F_POS_LEFT_JUSTIFY] = 1;
+        data->min_field_width = ABS(data->min_field_width);
+        return (1);
+    }
     int len = get_nbr_len(format);
     if (len <= 0 || format[0] == '-')
         return (0);
@@ -57,6 +65,10 @@ int min_width_handling(const char *format, printf_data_t *data, va_list args)
 
 int precision_handling(const char *format, printf_data_t *data, va_list args)
 {
+    if (format[0] == '.' && format[1] == '*') {
+        data->precision = va_arg(args, unsigned int);
+        return (2);
+    }
     int len = get_nbr_len(&format[1]);
     int value = 0;
 

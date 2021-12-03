@@ -54,7 +54,18 @@ SRC = check_overflow.c \
 	  my_printf/printf_handling.c \
 	  my_printf/type_float.c \
 	  my_printf/str_utils.c \
-	  my_printf/type_long_base.c
+	  my_printf/type_long_base.c \
+	  my_list/my_add_in_sorted_list.c \
+	  my_list/my_apply_on_matching_nodes.c \
+	  my_list/my_apply_on_nodes.c \
+	  my_list/my_concat_list.c \
+	  my_list/my_delete_nodes.c \
+	  my_list/my_find_node.c \
+	  my_list/my_list_size.c \
+	  my_list/my_merge.c \
+	  my_list/my_params_to_list.c \
+	  my_list/my_rev_list.c \
+	  my_list/my_sort_list.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -64,7 +75,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 		 ar rc $(NAME) $(OBJ)
+		 mkdir -p ../../include
 		 cp my.h ../../include/my.h
+		 cp my_list/my_list.h ../../include/my_list.h
 		 cp $(NAME) ../$(NAME)
 
 clean:

@@ -29,6 +29,7 @@ void replace_n_char(char *str, char c, int n)
 int show_data(printf_data_t *data)
 {
     int i = 0;
+    char *to_free = data->str;
     char symbol = ' ';
 
     if (data->active_flags[F_POS_LEFT_JUSTIFY])
@@ -44,7 +45,9 @@ int show_data(printf_data_t *data)
         my_putchar(symbol);
     if (!data->active_flags[F_POS_LEFT_JUSTIFY])
         my_putstr(data->str);
-    return (MAX(data->min_field_width, my_strlen(data->str)));
+    int result = MAX(data->min_field_width, my_strlen(data->str));
+    free(to_free);
+    return (result);
 }
 
 int format_identifier(const char *format, va_list args, int *written)
@@ -57,8 +60,10 @@ int format_identifier(const char *format, va_list args, int *written)
     i += min_width_handling(&format[i], data, args);
     i += precision_handling(&format[i], data, args);
     type_size = type_handling(&format[i], data, args);
-    if (type_size <= 0)
+    if (type_size <= 0) {
+        free(data);
         return (0);
+    }
     *written += show_data(data);
     free(data);
     return (i + type_size + 1);

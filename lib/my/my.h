@@ -7,6 +7,7 @@
 
 #ifndef MY_H_
     #define MY_H_
+
     #include <stdlib.h>
     #include <unistd.h>
     int check_overflow(long nb);
@@ -51,6 +52,8 @@
     int power(int nb, int power);
     int get_color(unsigned char red, unsigned char green, unsigned char blue);
     int swap_endian_color(int color);
+
     int my_printf(const char *format, ...);
+    char *my_addchar(char *src, char c);
 
 #endif /* !MY_H_ */

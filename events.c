@@ -15,31 +15,38 @@
 #include <SFML/System/Time.h>
 #include <SFML/System/Export.h>
 
-void window_events(sfRenderWindow *window, sfEvent *event)
+void window_events(game_data_t *g_data)
 {
-    if (event->type == sfEvtClosed)
-        sfRenderWindow_close(window);
+    if (g_data->event.type == sfEvtClosed)
+        sfRenderWindow_close(g_data->window);
 }
 
-void zqsd_events(sfEvent *event, game_data_t *game_data)
+void zqsd_events(game_data_t *g_data)
 {
-    game_data->ship->speed_vector.x = 0;
-    game_data->ship->speed_vector.y = 0;
+    g_data->ship->speed_vector.x = 0;
+    g_data->ship->speed_vector.y = 0;
     if (sfKeyboard_isKeyPressed(sfKeyZ))
-        game_data->ship->speed_vector.y = -SHIP_SPEED;
+        g_data->ship->speed_vector.y = -SHIP_SPEED;
     if (sfKeyboard_isKeyPressed(sfKeyQ))
-        game_data->ship->speed_vector.x = -SHIP_SPEED;
+        g_data->ship->speed_vector.x = -SHIP_SPEED;
     if (sfKeyboard_isKeyPressed(sfKeyS))
-        game_data->ship->speed_vector.y = SHIP_SPEED;
+        g_data->ship->speed_vector.y = SHIP_SPEED;
     if (sfKeyboard_isKeyPressed(sfKeyD))
-        game_data->ship->speed_vector.x = SHIP_SPEED;
+        g_data->ship->speed_vector.x = SHIP_SPEED;
 }
 
-void event_handler(sfRenderWindow *window, sfEvent *event,
-game_data_t *game_data)
+void click_events(game_data_t *g_data)
 {
-    while (sfRenderWindow_pollEvent(window, event)) {
-        window_events(window, event);
-        zqsd_events(event, game_data);
+    if (g_data->event.type == sfEvtMouseButtonPressed
+    && g_data->event.mouseButton.button == sfMouseLeft)
+        create_projectile(g_data);
+}
+
+void event_handler(game_data_t *g_data)
+{
+    while (sfRenderWindow_pollEvent(g_data->window, &g_data->event)) {
+        window_events(g_data);
+        zqsd_events(g_data);
+        click_events(g_data);
     }
 }

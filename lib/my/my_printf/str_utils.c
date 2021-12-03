@@ -32,5 +32,6 @@ char *my_addchar(char *src, char c)
         dest[i] = src[i];
     dest[i] = c;
     dest[i + 1] = '\0';
+    free(src);
     return dest;
 }
