@@ -44,6 +44,7 @@
         sfIntRect *state_list;
         int speed;
         int animation_counter;
+        int animation_state;
         int id;
     } sprite_data_t;
 
@@ -54,6 +55,7 @@
         sprite_data_t *ship;
         sprite_data_t *background;
         linked_list_t *projectile_list;
+        linked_list_t *planet_list;
     } game_data_t;
 
     // main.c
@@ -66,6 +68,12 @@
     void animate_projectile(sprite_data_t *projectile);
     sprite_data_t *create_projectile(game_data_t *g_data);
     void render_all_projectile(game_data_t *g_data);
+
+    // projectile.c
+    void move_planet(sprite_data_t *planet);
+    void animate_planet(sprite_data_t *planet);
+    sprite_data_t *create_planet(game_data_t *g_data);
+    void render_all_planet(game_data_t *g_data);
 
     // ship.c
     void move_ship(sprite_data_t *ship);

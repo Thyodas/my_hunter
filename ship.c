@@ -52,7 +52,7 @@ void create_ship(game_data_t *g_data)
     sfSprite_setTexture(sprite_ship->sprite, sprite_ship->texture, sfTrue);
     sfIntRect rect_ship = {32, 0, 16, 24};
     sfSprite_setTextureRect(sprite_ship->sprite, rect_ship);
-    sfSprite_setScale(sprite_ship->sprite, (sfVector2f){10, 10});
+    sfSprite_setScale(sprite_ship->sprite, (sfVector2f){7, 7});
     sfSprite_setPosition(sprite_ship->sprite, (sfVector2f){960 - 8 * 8, 800});
     sprite_ship->speed = SHIP_SPEED;
     sprite_ship->norm_vector = (sfVector2f){0, 0};

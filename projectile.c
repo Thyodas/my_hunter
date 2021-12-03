@@ -45,7 +45,7 @@ sprite_data_t *create_projectile(game_data_t *g_data)
     sfSprite_setTexture(projectile->sprite, projectile->texture, sfTrue);
     sfIntRect rect_ship = {6, 18, 5, 13};
     sfSprite_setTextureRect(projectile->sprite, rect_ship);
-    sfSprite_setScale(projectile->sprite, (sfVector2f){8, 8});
+    sfSprite_setScale(projectile->sprite, (sfVector2f){5, 5});
     projectile->id = projectile_id++;
     projectile->animation_counter = 0;
     my_add_node(projectile, &(g_data->projectile_list));

@@ -43,7 +43,7 @@ sfVector2f calc_projectile_vector(game_data_t *g_data, float x, float y)
 
 void check_angle(float *angle, sfVector2f *norm_vector)
 {
-    if (*angle < -45) {
+    if (*angle < -45 || (*angle >= 180 && *angle <= 215)) {
         *angle = -45;
         norm_vector->x = -1;
         norm_vector->y = -1;
