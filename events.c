@@ -35,18 +35,25 @@ void zqsd_events(game_data_t *g_data)
         g_data->ship->norm_vector.x = 1;
 }
 
-void click_events(game_data_t *g_data)
+void click_events(game_data_t *g_data, int *counter)
 {
     if (g_data->event.type == sfEvtMouseButtonPressed
-    && g_data->event.mouseButton.button == sfMouseLeft)
-        create_projectile(g_data);
+    && g_data->event.mouseButton.button == sfMouseLeft) {
+        if (*counter > 20) {
+            create_projectile(g_data);
+            *counter = 0;
+        }
+    }
 }
 
 void event_handler(game_data_t *g_data)
 {
+    static int counter = 0;
+
     while (sfRenderWindow_pollEvent(g_data->window, &g_data->event)) {
         window_events(g_data);
         zqsd_events(g_data);
-        click_events(g_data);
+        click_events(g_data, &counter);
     }
+    ++counter;
 }

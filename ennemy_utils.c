@@ -16,9 +16,9 @@ void setup_ennemy(sprite_data_t *ennemy)
     static unsigned previous = 0;
     time_t t;
     srand((unsigned) time(&t) + previous);
-    float x = rand() % 1920;
+    float x = rand() % 1820;
     float y = -300;
-    previous = x;
+    previous = x + 233;
 
     ennemy->speed = 6;
     ennemy->norm_vector = (sfVector2f){0, 1};

@@ -18,9 +18,9 @@ void my_hunter(game_data_t *g_data)
     float clock_seconds = 0;
 
     while (sfRenderWindow_isOpen(g_data->window)) {
-        event_handler(g_data);
         clock_seconds = sfTime_asSeconds(sfClock_getElapsedTime(g_data->clock));
         if (clock_seconds - time_delta > ms_per_second) {
+            event_handler(g_data);
             spawn_ennemy(g_data);
             move_all(g_data);
             check_all(g_data);
@@ -42,19 +42,9 @@ int main(int argc, char **argv)
         }
         return (84);
     }
-    sfVideoMode mode = {1920, 1080, 32};
     game_data_t *g_data = malloc(sizeof(game_data_t));
-    load_resources(g_data);
-    create_background(g_data);
-    create_ship(g_data);
-    g_data->hp = 3;
-    g_data->score = 0;
-    g_data->projectile_list = NULL;
-    g_data->planet_list = NULL;
-    g_data->ennemy_list = NULL;
-    g_data->window = sfRenderWindow_create(mode, "my_hunter", sfClose, NULL);
-    sfRenderWindow_setFramerateLimit(g_data->window, 60);
-    g_data->clock = sfClock_create();
+
+    init_game(g_data);
     my_hunter(g_data);
     free_all(g_data);
 }

@@ -12,10 +12,7 @@
 void move_projectile(sprite_data_t *projectile)
 {
     sfVector2f *vector = &(projectile->norm_vector);
-    sfFloatRect rect = sfSprite_getGlobalBounds(projectile->sprite);
 
-    if (rect.top + vector->y * projectile->speed < 0)
-        vector->y = 0;
     sfSprite_move(projectile->sprite,
     (sfVector2f){vector->x * projectile->speed, vector->y * projectile->speed});
 }

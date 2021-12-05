@@ -39,3 +39,22 @@ void free_all(game_data_t *g_data)
     free_sprite(g_data->ship);
     free(g_data);
 }
+
+void init_game(game_data_t *g_data)
+{
+    sfVideoMode mode = {1920, 1080, 32};
+    load_resources(g_data);
+    create_background(g_data);
+    create_ship(g_data);
+    create_score(g_data);
+    create_crosshair(g_data);
+    g_data->hp = 3;
+    g_data->score = 0;
+    g_data->projectile_list = NULL;
+    g_data->planet_list = NULL;
+    g_data->ennemy_list = NULL;
+    g_data->window = sfRenderWindow_create(mode, "my_hunter", sfClose, NULL);
+    sfRenderWindow_setFramerateLimit(g_data->window, 60);
+    g_data->clock = sfClock_create();
+    sfRenderWindow_setMouseCursorVisible(g_data->window, sfFalse);
+}

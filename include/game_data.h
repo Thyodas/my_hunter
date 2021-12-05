@@ -22,7 +22,7 @@
     } texture_state_t;*/
 
     #define SHIP_SPEED 10
-    #define PROJECTILE_SPEED 6
+    #define PROJECTILE_SPEED 15
     #define BACKGROUND_SPEED 3
 
     #define ABS(value) (value < 0 ? (value) * (-1) : (value))
@@ -40,13 +40,14 @@
     } sprite_data_t;
 
     typedef struct {
-        int score;
+        unsigned int score;
         int hp;
         sfRenderWindow *window;
         sfEvent event;
         sfClock *clock;
         sprite_data_t *ship;
         sprite_data_t *background;
+        sprite_data_t *crosshair;
         linked_list_t *projectile_list;
         linked_list_t *planet_list;
         linked_list_t *ennemy_list;
@@ -54,6 +55,7 @@
         sfImage *ennemy_image;
         sfTexture *projectile_texture;
         sfTexture *ennemy_texture;
+        sfText *text_score;
     } game_data_t;
 
     // main.c
@@ -117,5 +119,14 @@
     // memory.c
     void free_all(game_data_t *g_data);
     void load_resources(game_data_t *g_data);
+    void init_game(game_data_t *g_data);
+
+    // score.c
+    void create_score(game_data_t *g_data);
+    void update_score(game_data_t *g_data);
+
+    // crosshair.c
+    void move_crosshair(game_data_t *g_data);
+    void create_crosshair(game_data_t *g_data);
 
 #endif /* !GAME_DATA_H_ */

@@ -36,6 +36,10 @@ int render_all(game_data_t *g_data)
     render_all_planet(g_data);
     render_all_ennemy(g_data);
     sfRenderWindow_drawSprite(g_data->window, g_data->ship->sprite, NULL);
+    update_score(g_data);
+    sfRenderWindow_drawText(g_data->window, g_data->text_score, NULL);
+    move_crosshair(g_data);
+    sfRenderWindow_drawSprite(g_data->window, g_data->crosshair->sprite, NULL);
     sfRenderWindow_display(g_data->window);
     return (0);
 }
