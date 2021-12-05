@@ -26,7 +26,7 @@ void create_crosshair(game_data_t *g_data)
     sprite_crosshair->texture = sfTexture_createFromImage(
         sprite_crosshair->image, NULL);
     sprite_crosshair->sprite = sfSprite_create();
-    sfSprite_setTexture(sprite_crosshair->sprite, sprite_crosshair->texture, 
+    sfSprite_setTexture(sprite_crosshair->sprite, sprite_crosshair->texture,
         sfTrue);
     sfIntRect rect_crosshair = {20, 30, 13, 13};
     sfSprite_setTextureRect(sprite_crosshair->sprite, rect_crosshair);

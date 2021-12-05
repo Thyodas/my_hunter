@@ -5,7 +5,22 @@
 ## Makefile
 ##
 
-SRC = $(wildcard *.c)
+SRC = main.c \
+	  src/all_loop.c \
+	  src/check.c \
+	  src/events.c \
+	  src/memory.c \
+	  src/music.c \
+	  src/score.c \
+	  src/utils.c \
+	  src/sprites/background.c \
+	  src/sprites/crosshair.c \
+	  src/sprites/ennemy_utils.c \
+	  src/sprites/ennemy.c \
+	  src/sprites/planet.c \
+	  src/sprites/projectile_utils.c \
+	  src/sprites/projectile.c \
+	  src/sprites/ship.c
 
 OBJ = $(SRC:.c=.o)
 
