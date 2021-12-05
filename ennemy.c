@@ -37,8 +37,8 @@ sprite_data_t *create_ennemy(game_data_t *g_data)
     static int ennemy_id = 0;
 
     sprite_data_t *ennemy = malloc(sizeof(sprite_data_t));
-    ennemy->image = sfImage_createFromFile("resources/ennemy.png");
-    ennemy->texture = sfTexture_createFromImage(ennemy->image, NULL);
+    ennemy->image = g_data->ennemy_image;
+    ennemy->texture = g_data->ennemy_texture;
     ennemy->sprite = sfSprite_create();
     sfSprite_setTexture(ennemy->sprite, ennemy->texture, sfTrue);
     sfIntRect rect_ship = {0, 0, 32, 32};

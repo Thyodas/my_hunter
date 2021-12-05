@@ -38,8 +38,8 @@ sprite_data_t *create_projectile(game_data_t *g_data)
     static int projectile_id = 0;
 
     sprite_data_t *projectile = malloc(sizeof(sprite_data_t));
-    projectile->image = sfImage_createFromFile("resources/projectile.png");
-    projectile->texture = sfTexture_createFromImage(projectile->image, NULL);
+    projectile->image = g_data->projectile_image;
+    projectile->texture = g_data->projectile_texture;
     projectile->sprite = sfSprite_create();
     sfSprite_setTexture(projectile->sprite, projectile->texture, sfTrue);
     sfIntRect rect_ship = {6, 18, 5, 13};

@@ -18,10 +18,11 @@ int check_collision(game_data_t *g_data, sprite_data_t *projectile, sprite_data_
     sfFloatRect ennemy_box = sfSprite_getGlobalBounds(ennemy->sprite);
 
     if (sfFloatRect_intersects(&ennemy_box, &projectile_box, NULL)) {
+        sfSprite_destroy(projectile->sprite);
+        sfSprite_destroy(ennemy->sprite);
         my_delete_nodes(&g_data->ennemy_list, &ennemy->id, &cmp_nb);
         my_delete_nodes(&g_data->projectile_list, &projectile->id, &cmp_nb);
         ++g_data->score;
-        my_printf("Score : %d", g_data->score);
         return (1);
     }
     return (0);
@@ -43,6 +44,7 @@ void check_btw_ennemy_projectile(game_data_t *g_data)
             head_ennemy = head_ennemy->next;
             collided = check_collision(g_data, tmp_projectile->data, tmp_ennemy->data);
         }
+        head_ennemy = g_data->ennemy_list;
         collided = 0;
     }
 }

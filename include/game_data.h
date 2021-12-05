@@ -28,20 +28,11 @@
     #define ABS(value) (value < 0 ? (value) * (-1) : (value))
     #define MAX(a, b) ((a) > (b) ? (a) : (b))
     #define MIN(a, b) ((a) < (b) ? (a) : (b))
-
-    static const sfIntRect SHIP_STATES[] = {
-        {0, 0, 16, 24}, {16, 0, 16, 24}, {32, 0, 16, 24}, {48, 0, 16, 24},
-        {64, 0, 16, 24},
-        {0, 12, 16, 24}, {16, 12, 16, 24}, {32, 12, 16, 24}, {48, 12, 16, 24},
-        {64, 12, 16, 24}
-    };
-
     typedef struct {
         sfImage *image;
         sfTexture *texture;
         sfSprite *sprite;
         sfVector2f norm_vector;
-        sfIntRect *state_list;
         int speed;
         int animation_counter;
         int animation_state;
@@ -59,10 +50,14 @@
         linked_list_t *projectile_list;
         linked_list_t *planet_list;
         linked_list_t *ennemy_list;
+        sfImage *projectile_image;
+        sfImage *ennemy_image;
+        sfTexture *projectile_texture;
+        sfTexture *ennemy_texture;
     } game_data_t;
 
     // main.c
-    int my_hunter(game_data_t *g_data);
+    void my_hunter(game_data_t *g_data);
     int main(int argc, char **argv);
 
     // all_loop.c
@@ -118,5 +113,9 @@
 
     // check.c
     void check_btw_ennemy_projectile(game_data_t *g_data);
+
+    // memory.c
+    void free_all(game_data_t *g_data);
+    void load_resources(game_data_t *g_data);
 
 #endif /* !GAME_DATA_H_ */
