@@ -30,5 +30,4 @@
     void my_rev_list(linked_list_t **begin);
     void my_sort_list(linked_list_t **begin, int (*cmp)());
 
-
 #endif /* !MYLIST_H_H */

@@ -35,6 +35,7 @@ void free_all(game_data_t *g_data)
     sfTexture_destroy(g_data->projectile_texture);
     sfTexture_destroy(g_data->ennemy_texture);
     sfClock_destroy(g_data->clock);
+    sfMusic_destroy(g_data->music);
     free_sprite(g_data->background);
     free_sprite(g_data->ship);
     free(g_data);
@@ -44,6 +45,7 @@ void init_game(game_data_t *g_data)
 {
     sfVideoMode mode = {1920, 1080, 32};
     load_resources(g_data);
+    import_music(g_data);
     create_background(g_data);
     create_ship(g_data);
     create_score(g_data);

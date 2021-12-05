@@ -16,7 +16,7 @@ INCLUDE = include
 LIB = lib/my
 
 CFLAGS = -I$(INCLUDE) -L$(LIB) -lmy -Wall -Wextra -g -W -Wall -Wextra\
-		 -lcsfml-system -lcsfml-window -lcsfml-graphics -lm
+		 -lcsfml-system -lcsfml-audio -lcsfml-window -lcsfml-graphics -lm
 
 all: $(NAME)
 

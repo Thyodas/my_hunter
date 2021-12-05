@@ -56,6 +56,7 @@
         sfTexture *projectile_texture;
         sfTexture *ennemy_texture;
         sfText *text_score;
+        sfMusic *music;
     } game_data_t;
 
     // main.c
@@ -128,5 +129,8 @@
     // crosshair.c
     void move_crosshair(game_data_t *g_data);
     void create_crosshair(game_data_t *g_data);
+
+    // music.c
+    void import_music(game_data_t *g_data);
 
 #endif /* !GAME_DATA_H_ */
