@@ -26,7 +26,8 @@ void animate_planet(sprite_data_t *planet)
 
     if (planet->animation_counter > 5) {
         planet_rect.left = 210 * planet->animation_state;
-        planet->animation_state = planet->animation_state >= 49 ? 0 : planet->animation_state + 1;
+        planet->animation_state = planet->animation_state >= 49 ?
+            0 : planet->animation_state + 1;
         planet->animation_counter = 0;
     } else
         ++planet->animation_counter;

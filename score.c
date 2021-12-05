@@ -24,11 +24,10 @@ void create_score(game_data_t *g_data)
 
 void update_score(game_data_t *g_data)
 {
-    //char *score = my_strdup("score ");
     char *result = my_strdup("score ");
 
     result = my_struint_base(g_data->score, result, "0123456789", -1);
     my_revstr(result + 6);
     sfText_setString(g_data->text_score, result);
-    //free(result);
+    free(result);
 }

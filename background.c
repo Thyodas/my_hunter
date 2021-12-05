@@ -18,7 +18,7 @@ void move_background(sprite_data_t *background)
     else
         sfSprite_move(background->sprite,
         (sfVector2f){vector.x * background->speed,
-                     vector.y * background->speed});
+        vector.y * background->speed});
 }
 
 void create_background(game_data_t *g_data)
@@ -26,7 +26,8 @@ void create_background(game_data_t *g_data)
     sprite_data_t *background = malloc(sizeof(sprite_data_t));
     background->image = sfImage_createFromFile("resources/background.png");
     sfIntRect area_state = {0, 0, 64, 64};
-    background->texture = sfTexture_createFromImage(background->image, &area_state);
+    background->texture = sfTexture_createFromImage(background->image,
+        &area_state);
     sfTexture_setRepeated(background->texture, sfTrue);
     background->sprite = sfSprite_create();
     sfSprite_setTexture(background->sprite, background->texture, sfTrue);

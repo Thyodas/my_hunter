@@ -12,7 +12,8 @@ int cmp_nb(sprite_data_t *sprite, int *nb) {
     return (sprite->id == *nb ? 0 : -1);
 }
 
-int check_collision(game_data_t *g_data, sprite_data_t *projectile, sprite_data_t *ennemy)
+int check_collision(game_data_t *g_data, sprite_data_t *projectile,
+sprite_data_t *ennemy)
 {
     sfFloatRect projectile_box = sfSprite_getGlobalBounds(projectile->sprite);
     sfFloatRect ennemy_box = sfSprite_getGlobalBounds(ennemy->sprite);
@@ -42,7 +43,8 @@ void check_btw_ennemy_projectile(game_data_t *g_data)
         for (int j = 0 ; head_ennemy != NULL && !collided ; ++j) {
             tmp_ennemy = head_ennemy;
             head_ennemy = head_ennemy->next;
-            collided = check_collision(g_data, tmp_projectile->data, tmp_ennemy->data);
+            collided = check_collision(g_data, tmp_projectile->data,
+                tmp_ennemy->data);
         }
         head_ennemy = g_data->ennemy_list;
         collided = 0;
