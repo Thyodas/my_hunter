@@ -41,6 +41,7 @@
 
     typedef struct {
         unsigned int score;
+        unsigned int stage;
         int hp;
         sfRenderWindow *window;
         sfEvent event;
@@ -93,8 +94,9 @@
     void render_all_ennemy(game_data_t *g_data);
 
     // ennemy_utils.c
-    void setup_ennemy(sprite_data_t *ennemy);
+    void setup_ennemy(game_data_t *g_data, sprite_data_t *ennemy);
     void spawn_ennemy(game_data_t *g_data);
+    void check_stage(game_data_t *g_data);
 
     // ship.c
     void move_ship(sprite_data_t *ship);

@@ -52,6 +52,7 @@ void init_game(game_data_t *g_data)
     create_crosshair(g_data);
     g_data->hp = 3;
     g_data->score = 0;
+    g_data->stage = 1;
     g_data->projectile_list = NULL;
     g_data->planet_list = NULL;
     g_data->ennemy_list = NULL;

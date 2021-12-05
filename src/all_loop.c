@@ -46,5 +46,6 @@ int render_all(game_data_t *g_data)
 
 void check_all(game_data_t *g_data)
 {
+    check_stage(g_data);
     check_btw_ennemy_projectile(g_data);
 }

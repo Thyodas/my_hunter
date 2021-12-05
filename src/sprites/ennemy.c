@@ -48,7 +48,7 @@ sprite_data_t *create_ennemy(game_data_t *g_data)
     ennemy->animation_counter = 0;
     ennemy->animation_state = 0;
     my_add_node(ennemy, &(g_data->ennemy_list));
-    setup_ennemy(ennemy);
+    setup_ennemy(g_data, ennemy);
     return (ennemy);
 }
 
