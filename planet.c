@@ -37,7 +37,6 @@ void animate_planet(sprite_data_t *planet)
 sprite_data_t *create_planet(game_data_t *g_data)
 {
     static int planet_id = 0;
-    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(g_data->window);
 
     sprite_data_t *planet = malloc(sizeof(sprite_data_t));
     planet->image = sfImage_createFromFile("resources/gas_planet.png");
@@ -51,7 +50,6 @@ sprite_data_t *create_planet(game_data_t *g_data)
     planet->animation_counter = 0;
     planet->animation_state = 0;
     my_add_node(planet, &(g_data->planet_list));
-    //setup_planet(g_data, planet);
     return (planet);
 }
 

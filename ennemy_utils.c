@@ -16,7 +16,6 @@ void setup_ennemy(sprite_data_t *ennemy)
     static unsigned previous = 0;
     time_t t;
     srand((unsigned) time(&t) + previous);
-    sfFloatRect ennemy_rect = sfSprite_getGlobalBounds(ennemy->sprite);
     float x = rand() % 1920;
     float y = -300;
     previous = x;

@@ -35,7 +35,6 @@ void animate_ennemy(sprite_data_t *ennemy)
 sprite_data_t *create_ennemy(game_data_t *g_data)
 {
     static int ennemy_id = 0;
-    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(g_data->window);
 
     sprite_data_t *ennemy = malloc(sizeof(sprite_data_t));
     ennemy->image = sfImage_createFromFile("resources/ennemy.png");

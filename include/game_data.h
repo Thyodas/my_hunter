@@ -62,9 +62,14 @@
     } game_data_t;
 
     // main.c
-    int game_loop(game_data_t *data);
     int my_hunter(game_data_t *g_data);
     int main(int argc, char **argv);
+
+    // all_loop.c
+    int move_all(game_data_t *g_data);
+    int animate_all(game_data_t *g_data);
+    int render_all(game_data_t *g_data);
+    void check_all(game_data_t *g_data);
 
     // projectile.c
     void move_projectile(sprite_data_t *projectile);
@@ -110,5 +115,8 @@
     // utils.c
     void print_help(void);
     sfVector2f normalize_vector(sfVector2f vector);
+
+    // check.c
+    void check_btw_ennemy_projectile(game_data_t *g_data);
 
 #endif /* !GAME_DATA_H_ */

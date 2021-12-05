@@ -36,7 +36,6 @@ void animate_projectile(sprite_data_t *projectile)
 sprite_data_t *create_projectile(game_data_t *g_data)
 {
     static int projectile_id = 0;
-    sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(g_data->window);
 
     sprite_data_t *projectile = malloc(sizeof(sprite_data_t));
     projectile->image = sfImage_createFromFile("resources/projectile.png");
